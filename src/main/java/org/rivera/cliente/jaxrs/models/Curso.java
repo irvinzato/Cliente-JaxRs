@@ -10,7 +10,7 @@ public class Curso {
 
   private String description;
 
-  private String teacher;
+  private Instructor teacher;
 
   private Double duration;
 
@@ -38,11 +38,11 @@ public class Curso {
     this.description = description;
   }
 
-  public String getTeacher() {
+  public Instructor getTeacher() {
     return teacher;
   }
 
-  public void setTeacher(String teacher) {
+  public void setTeacher(Instructor teacher) {
     this.teacher = teacher;
   }
 

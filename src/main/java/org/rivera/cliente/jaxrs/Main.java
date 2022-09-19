@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.rivera.cliente.jaxrs.models.Curso;
+import org.rivera.cliente.jaxrs.models.Instructor;
 
 import java.util.List;
 
@@ -43,10 +44,12 @@ public class Main {
 
     System.out.println("========== Creación de Curso ==========");
     Curso newCourse = new Curso();
-    newCourse.setName("FlexBox");
-    newCourse.setTeacher("Irving");
-    newCourse.setDescription("La mejor herramienta para paginas responsivas");
-    newCourse.setDuration(35D);
+    newCourse.setName("Prime Ng");
+    newCourse.setDescription("Muy buena opción para estilos en páginas");
+    newCourse.setDuration(22D);
+    Instructor teacher = new Instructor();
+    teacher.setId(2L);      //Basta id para tener la relación entre tablas
+    newCourse.setTeacher(teacher);
 
     Entity<Curso> entityHeader = Entity.entity(newCourse, MediaType.APPLICATION_JSON);
     course = rootUri.request(MediaType.APPLICATION_JSON)
@@ -56,7 +59,8 @@ public class Main {
 
     System.out.println("========== Editar Curso ==========");
     Curso editCourse = course;
-    editCourse.setDuration(39D);
+    editCourse.setDuration(25D);
+
     entityHeader = Entity.entity(editCourse, MediaType.APPLICATION_JSON);
     course = rootUri.path("/" + editCourse.getId())
             .request(MediaType.APPLICATION_JSON)
@@ -65,10 +69,10 @@ public class Main {
     getCourses(rootUri);
 
     System.out.println("========== Eliminar Curso ==========");
-    rootUri.path("/6")
+    /* rootUri.path("/6")
             .request()
             .delete();
-    getCourses(rootUri);
+    getCourses(rootUri); */
 
 
   }
